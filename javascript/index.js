@@ -31,7 +31,11 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-  // ... your code goes here
+  //creating an li to append to ul element
+  let listEl = document.createElement('li');
+  let parentList = document.querySelector('#splits');
+  listEl.innerHTML = "testing";
+  parentList.appendChild(listEl);  
 }
 
 function clearSplits() {
@@ -39,27 +43,50 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeftElement.className = "btn stop";
+  btnLeftElement.innerHTML = "STOP";
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRightElement.className = "btn split";
+  btnRightElement.innerHTML = "SPLIT";
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeftElement.className = "btn start";
+  btnLeftElement.innerHTML = "START";
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRightElement.className = "btn reset";
+  btnRightElement.innerHTML = "RESET";
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  //checking if the chrono status is started
+  if (btnLeftElement.className === "btn start") {
+    //start the chrono
+    chronometer.start();
+    setStopBtn();
+    setSplitBtn();
+  }
+  else {
+    //stop the chrono
+    chronometer.stop();
+    setStartBtn();
+    setResetBtn();
+  }
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+    //checking if the chrono status is stopped or started:
+    if (btnLeftElement.className === "btn start") {
+      //reset the counter
+    }
+    else {
+      //split the time
+      printSplit();
+    }
 });
